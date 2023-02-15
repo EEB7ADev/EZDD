@@ -10,11 +10,12 @@ This project is NOT released, it is public to test the updating functions
 **TODO**
 - [X] code a settings app
 - [X] code a small feature that if you run a program by clicking on it rather than the main menu, when you exit it it will exit and not go to the main menu
-- [] Code the Installation/upgrade
+- [] Code an app that reverts the old steam game back to the new version
 - [X] Flatten bugs
+- [] Code the Installation/upgrade
 - [] Test on another machine
 - [] Release to V1.0
-- [] Code an app that teaches the user how to get back to the current version of steam game
+
 
 <br>
 <br>
