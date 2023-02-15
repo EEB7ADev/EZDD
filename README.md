@@ -14,6 +14,7 @@ This project is NOT released, it is public to test the updating functions
 - [X] Flatten bugs
 - [] Test on another machine
 - [] Release to V1.0
+- [] Code an app that teaches the user how to get back to the current version of steam game
 
 <br>
 <br>
