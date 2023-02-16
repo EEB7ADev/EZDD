@@ -12,7 +12,7 @@ This project is NOT released, it is public to test the updating functions
 - [X] code a small feature that if you run a program by clicking on it rather than the main menu, when you exit it it will exit and not go to the main menu
 - [X] Code an app that reverts the old steam game back to the new version
 - [X] Flatten bugs
-- [] Code the Installation/upgrade
+- [X] Code the Installation/upgrade
 - [] Test on another machine
 - [] Release to V1.0
 
