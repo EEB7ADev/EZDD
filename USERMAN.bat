@@ -1,5 +1,5 @@
 @echo off
-title EZDD Username management
+title EZDD Username Management
 mkdir "%LOCALAPPDATA%\ECC\EZDD\USER"
 cls
 @echo Hello %USERNAME%! Here are all the slots used for saving your username.
@@ -11,7 +11,7 @@ cls
 @echo 1. Inspect slots
 @echo 2. Manage slots
 @echo 3. How do I add/delete slots
-set /P c=4. Return to main menu 
+set /P c=4. Return to main menu
 if "%c%" EQU "1" goto :inspect
 if "%c%" EQU "2" goto :manage
 if "%c%" EQU "3" goto :how
@@ -60,4 +60,5 @@ pause
 goto :choice
 
 :bye
-EZDD
+if "%1" EQU "fromapp" EZDD.bat
+exit

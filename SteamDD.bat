@@ -1,13 +1,19 @@
 @echo off
-
-mkdir "%appdata%\..\local\ecc\SteamDD
+:depotcheck
+if not exist depotdownloader.exe (
+    @echo The app will not function because a core requirement depotdownloader is nonexistent
+    @echo To fix this, please reinstall depotdownloader
+    pause
+    goto :bye
+)
 title SteamDD
+mkdir "%LOCALAPPDATA%\ECC\SteamDD"
 cls
 
 :abrt
 set /P abort=Abort or Continue? (A OR C)  
-IF "%abort%" EQU "A" EZDD
-IF "%abort%" EQU "C" goto :appinfo
+IF "%abort%" EQU "a" goto :bye
+IF "%abort%" EQU "c" goto :appinfo
 goto :abrt
 
 :appinfo
@@ -33,9 +39,11 @@ goto :depot
 
 
 :depot
-@echo on
 depotdownloader.exe -app %app% -depot %depot% -manifest %manifest% -username %usrname% -password %password%
 @echo off
+@echo The execution has completed.
+@echo PLEASE check if the application downloaded successfully, PLEASE.
+@echo If it did NOT download successfully, try again or maybe it just doesnt work.
 pause
 goto :bye
 
@@ -57,5 +65,7 @@ set /P usrok=%usrname% will be used, Is that ok? (y/n)
 if "%usrok%" EQU "y" goto :pass
 if "%usrok%" EQU "n" goto :retsv
 
+
 :bye
-EZDD
+if "%1" EQU "fromapp" EZDD.bat
+exit

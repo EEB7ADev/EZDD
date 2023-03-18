@@ -1,17 +1,35 @@
 @echo off
+:depotcheck
+if not exist depotdownloader.exe (
+    @echo The app will not function because a core requirement depotdownloader is nonexistent
+    @echo To fix this, please reinstall depotdownloader and ensure all files are in their correct places
+    pause
+    goto :bye
+)
 cls
 title Copy Downloaded game
-set /P id=Enter the depot id here or type in r to go back
+set /P id=Enter the depot id here or type in b to quit 
 
-if "%id%" EQU "r" goto :bye
+if "%id%" EQU "b" goto :bye
 
 
 :steampathchk
 if exist "%appdata%\..\local\ecc\steamdd\pa.th" (
-goto :copy
+    goto :copy
 )
 cls
-set /P p=What is the common folder path?
+if exist "C:\Program Files (x86)\Steam\steamapps" (
+    @echo "C:\Program Files (x86)\Steam\steamapps\common" >> "%appdata%\..\local\ecc\steamdd\pa.th"
+    goto :copy
+)
+:isvalidsteampath
+cls
+set /P p=Your steamapps location has not yet been saved, type in your steamapps\common location now 
+if not exist "%path%\..\..\steamapps" (
+    @echo Please enter a valid path
+    pause
+    goto :isvalidsteampath
+)
 @echo %p% >> "%appdata%\..\local\ecc\steamdd\pa.th"
 
 :copy
@@ -55,9 +73,16 @@ if not exist %folnm% (
 pause
 cls
 cd %folnm%
+:exenm
+cls
 dir *.exe
 @echo shown above is the directory of the depot downloaded game
-set /P exenm=Please type in the executable name of which launches the game 
+set /P exenm=Please type in the executable name of which launches the game
+if not exist "%exenm%.exe" (
+    @echo This exe does not exist, please enter a valid exe
+    pause
+    goto :exenm
+)
 cls
 title instruction on Validation
 @echo the game will now launch
@@ -68,4 +93,5 @@ pause
 %exenm%
 
 :bye
-EZDD
+if "%1" EQU "fromapp" EZDD.bat
+exit

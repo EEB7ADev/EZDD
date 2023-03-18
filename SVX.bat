@@ -1,3 +1,4 @@
+@echo off
 :steamvalxplain
 @echo This is an explaination of something I call "Steam Validation" >> "%USERPROFILE%\desktop\What is Steam Validation and how does it work.txt"
 @echo when downloading an older version of a game, you would have thought that it would run undetected  >> "%USERPROFILE%\desktop\What is Steam Validation and how does it work.txt"
@@ -15,4 +16,5 @@
 @echo that is steam validation and how it works >> "%USERPROFILE%\desktop\What is Steam Validation and how does it work.txt"
 @echo a text file has been placed on your desktop
 pause
-EZDD.bat
+if "%1" EQU "fromapp" EZDD.bat
+exit
