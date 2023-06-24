@@ -4,6 +4,7 @@ title EZDD for SteamRE/depotdownloader
 if exist "%LOCALAPPDATA%\ECC\EZDD\clean.up" (
     @echo cleaning up...
     rd /s /q upgrade
+    rd /s /q uninstall
     rd /s /q ezdd
     DEL *.EZDD.zip
     DEL "%LOCALAPPDATA%\ECC\EZDD\clean.up"
@@ -83,7 +84,8 @@ goto :choice
 :error
 cls
 @echo Sorry, we couldnt launch that app because it doesnt exist.
-@echo You can fix this by reinstalling the program at https://github.com/eeb7adev/ezdd
+@echo You can fix this by attempting to upgrade the app.
+@ehco if this doesnt work, you can try resinstalling the program at https://github.com/eeb7adev/ezdd
 pause
 goto :choice
 

@@ -35,7 +35,7 @@ if not exist "%path%\..\..\steamapps" (
 :copy
 cls
 title Steam Validation and copy process
-set /P path=<"%appdata%\..\local\ecc\steamdd\pa.th"
+set /P ddpath=<"%appdata%\..\local\ecc\steamdd\pa.th"
 @echo We will now open 2 directories, the first directory is your common folder
 @echo the second directory is the folder the game was downloaded to
 @echo in the common folder, locate the folder of the game you have downloaded.
@@ -44,7 +44,7 @@ set /P path=<"%appdata%\..\local\ecc\steamdd\pa.th"
 @echo rename the folder you see into the SAME FOLDER NAME
 @echo if you are confused about all this, please select the "What is Steam Activation in the home menu"
 pause
-start %path%
+start %ddpath%
 start .\depots\%id%
 
 @echo please look into the common folder for the folder name of the game you want to validate.
@@ -62,7 +62,7 @@ rename recasing %folnm%
 
 cls
 @echo Please move %folnm% to the common folder
-cd /d "%path%"
+cd /d "%ddpath%"
 rename "%folnm%" "%folnm%CURRENT"
 
 :newfolchk
