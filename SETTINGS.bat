@@ -56,8 +56,7 @@ curl -LJO %download_url%
 REM Extract the release asset
 powershell -Command "Expand-Archive -Path ".\*.EZDD.zip" ".\uninstall""
 
-cd uninstall
-cd eazydepotdownloader
+cd uninstall\eazydepotdownloader
 setup.bat uninstallDGd8GFHEICDBd6dMP3binfhGDhd63bs8X86
 
 :bye

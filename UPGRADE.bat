@@ -52,7 +52,7 @@ curl -LJO %download_url%
 REM Extract the release asset
 powershell -Command "Expand-Archive -Path ".\*.EZDD.zip" ".\upgrade""
 
-cd upgrade
+cd upgrade\eazydepotdownloader
 setup.bat upgradehf8HEW8nWin328HEVCBDS0
 
 goto :bye

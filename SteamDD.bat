@@ -43,7 +43,9 @@ depotdownloader.exe -app %app% -depot %depot% -manifest %manifest% -username %us
 @echo off
 @echo The execution has completed.
 @echo PLEASE check if the application downloaded successfully, PLEASE.
-@echo If it did NOT download successfully, try again or maybe it just doesnt work.
+@echo If it did NOT download successfully, try again
+@echo if it still did not work, try reinstalling dependencies, those are dotnet-runtime-6.
+@echo if it STILL did not work, feel free to open an issue on the github page (where you got this from)
 pause
 goto :bye
 

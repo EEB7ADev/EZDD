@@ -25,7 +25,7 @@ if exist "C:\Program Files (x86)\Steam\steamapps" (
 :isvalidsteampath
 cls
 set /P p=Your steamapps location has not yet been saved, type in your steamapps\common location now 
-if not exist "%path%\..\..\steamapps" (
+if not exist "%p%\..\..\steamapps" (
     @echo Please enter a valid path
     pause
     goto :isvalidsteampath
@@ -35,7 +35,7 @@ if not exist "%path%\..\..\steamapps" (
 :copy
 cls
 title Steam Validation and copy process
-set /P ddpath=<"%appdata%\..\local\ecc\steamdd\pa.th"
+set /P steampath=<"%appdata%\..\local\ecc\steamdd\pa.th"
 @echo We will now open 2 directories, the first directory is your common folder
 @echo the second directory is the folder the game was downloaded to
 @echo in the common folder, locate the folder of the game you have downloaded.
@@ -44,35 +44,42 @@ set /P ddpath=<"%appdata%\..\local\ecc\steamdd\pa.th"
 @echo rename the folder you see into the SAME FOLDER NAME
 @echo if you are confused about all this, please select the "What is Steam Activation in the home menu"
 pause
-start %ddpath%
+start %steampath%
 start .\depots\%id%
 
+:gamefolder
+cls
 @echo please look into the common folder for the folder name of the game you want to validate.
 set /P folnm=IT IS CASE SENSITIVE 
+if not exist "%steampath%\%folnm%" (
+    @echo This game does not exist or may have already been copied.
+    pause
+    goto :gamefolder
+)
 @echo Please rename the folder you see in your depot downloader folder to %folnm%
 @echo as soon you rename the folder, we will recase the folder and begin the validation process
 
 :checkifrename
-if not exist .\depots\%depot%\%folnm% (
+if not exist ".\depots\%id%\%folnm%" (
     goto :checkifrename
 )
-cd .\depots\%depot%
-rename %folnm% recasing
-rename recasing %folnm%
+cd .\depots\%id%
+rename "%folnm%" recasing
+rename recasing "%folnm%"
 
 cls
 @echo Please move %folnm% to the common folder
-cd /d "%ddpath%"
+cd /d "%steampath%"
 rename "%folnm%" "%folnm%CURRENT"
 
 :newfolchk
-if not exist %folnm% (
+if not exist "%folnm%" (
     goto :newfolchk
 )
 @echo Please wait until the moving process has completed
 pause
 cls
-cd %folnm%
+cd "%folnm%"
 :exenm
 cls
 dir *.exe
@@ -93,5 +100,6 @@ pause
 %exenm%
 
 :bye
+set /P ezpth=<"%LOCALAPPDATA%\ECC\EZDD\loca.tion"
 if "%1" EQU "fromapp" EZDD.bat
 exit
