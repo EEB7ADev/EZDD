@@ -13,7 +13,7 @@ This project is NOT released, it is public to test the updating functions
 - [X] Code an app that reverts the old steam game back to the new version
 - [X] Flatten bugs
 - [X] Code the Installation/upgrade
-- [] Test on another machine
+- [X] Test on another machine
 - [] Release to V1.0
 
 
