@@ -17,6 +17,7 @@ This project is NOT released, it is public to test the updating functions
 - [] Release to V1.0
 
 <h2>We are very close to V1, Here are some things I want to do before V1</h2>
+**TODO**
 - [] maybe removed the need for git?, If this works, I need to make a settings option called remove git.
 - [] "small patches" which are small patches that arent release worthy. This will make the program copy files from the repo rather than from the installer package, you will be able to update to these patches from option 7. check for updates
 - [] move the files downloaded during installation to the appdata folder
