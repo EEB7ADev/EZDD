@@ -8,6 +8,8 @@ if not exist depotdownloader.exe (
 )
 REM load current version
 set /P cver=<"version.txt"
+REM load current patch version
+set /P cpver=<"patchversion.txt"
 
 REM download and load new version
 git clone https://github.com/eeb7adev/ezdd
@@ -25,7 +27,11 @@ if %cver% EQU %nver% goto :latest
 if %cver% LSS %nver% goto :new
 REM Displays data
 :spatch
+
+REM load new patch version
+set /P npver=<"patchversion.txt"
 cd ..
+if %cpver% LSS %npver% goto :appatch
 :appatch
 cls
 @echo A small patch is available!
