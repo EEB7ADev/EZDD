@@ -13,6 +13,8 @@ REM download and load new version
 git clone https://github.com/eeb7adev/ezdd
 
 cd ezdd
+set /P isnewpatch=<"arepatchavailable.txt"
+if %isnewpatch% EQU 1 goto :spatch
 set /P nver=<"version.txt"
 
 cd..
@@ -22,6 +24,14 @@ if %cver% GTR %nver% goto :time
 if %cver% EQU %nver% goto :latest
 if %cver% LSS %nver% goto :new
 REM Displays data
+:spatch
+cls
+@echo A small patch is available!
+set /P applypatch=Do you want to apply the patch? (Y/N) 
+if "%applypatch%" EQU "y" goto :smallpatch
+if "%applypatch%" EQU "n" goto :bye
+goto :spatch
+
 :time
 @echo woah woah WOAH, are you a time traveler? you have a version thats newer than the latest version! As if thats possible...
 pause
@@ -56,6 +66,9 @@ cd upgrade\eazydepotdownloader
 setup.bat upgradehf8HEW8nWin328HEVCBDS0
 
 goto :bye
+
+:smallpatch
+copy *.bat .\..
 
 :bye
 rd /s /q ezdd REM cleanup and exit
