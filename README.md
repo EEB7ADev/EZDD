@@ -24,8 +24,8 @@ We are very close to V1, Here are some things I want to do before V1
 - [] ~move the files downloaded during installation to the appdata folder~
 - [X] "small patches" which are small patches that arent release worthy. This will make the program copy files from the repo rather than from the installer package, you will be able to update to these patches from option 7. check for updates
 - [X] for the small patches, I realized I need to somehow make it so that once you install the patch, it doesnt say that there are patches available
-- [] Create a settings option to manage the appdata folder
-- [] create a settings option to reinstall dependencies
+- [X] Create a settings option to manage the appdata folder
+- [X] create a settings option to reinstall dependencies
 
 <br>
 <br>
