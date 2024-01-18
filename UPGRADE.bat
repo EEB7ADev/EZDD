@@ -25,12 +25,14 @@ if %cver% EQU %nver% goto :latest
 if %cver% LSS %nver% goto :new
 REM Displays data
 :spatch
+cd ..
+:appatch
 cls
 @echo A small patch is available!
 set /P applypatch=Do you want to apply the patch? (Y/N) 
 if "%applypatch%" EQU "y" goto :smallpatch
 if "%applypatch%" EQU "n" goto :bye
-goto :spatch
+goto :appatch
 
 :time
 @echo woah woah WOAH, are you a time traveler? you have a version thats newer than the latest version! As if thats possible...
@@ -68,7 +70,11 @@ setup.bat upgradehf8HEW8nWin328HEVCBDS0
 goto :bye
 
 :smallpatch
+cd ezdd
 copy *.bat .\..
+cd..
+@echo patch completed!
+pause
 
 :bye
 rd /s /q ezdd REM cleanup and exit
