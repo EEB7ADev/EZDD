@@ -79,6 +79,8 @@ goto :bye
 cd ezdd
 copy *.bat .\..
 cd..
+del patchversion.txt
+@echo %npver% >> patchversion.txt
 @echo patch completed!
 pause
 
