@@ -47,6 +47,7 @@ pause
 goto :bye
 
 :latest
+cls
 @echo You are on the latest version!
 pause
 goto :bye
