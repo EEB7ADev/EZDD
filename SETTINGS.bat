@@ -12,13 +12,17 @@ set sure=nol
 cls
 @echo Here are the options available in this menu:
 @echo 1. Cleanup depots
-@echo 2. Reset program
-@echo 3. Uninstall EZDD
-set /P choice=4. Quit 
+@echo 2. Manage AppData folder
+@echo 3. Reinstall Dependencies
+@echo 4. Reset program
+@echo 5. Uninstall EZDD
+set /P choice=6. Quit 
 if "%choice%" EQU "1" goto :cleanup
-if "%choice%" EQU "2" goto :reset
-if "%choice%" EQU "3" goto :uninstall
-if "%choice%" EQU "4" goto :bye
+if "%choice%" EQU "2" goto :appdata
+if "%choice%" EQU "3" goto :reinstalldep
+if "%choice%" EQU "4" goto :reset
+if "%choice%" EQU "5" goto :uninstall
+if "%choice%" EQU "6" goto :bye
 goto :choice
 
 :cleanup
@@ -30,6 +34,21 @@ goto :cleanup
 
 :del
 rd /s /q depots
+goto :choice
+:appdata
+start "%LOCALAPPDATA%\ECC\EZDD"
+
+:reinstalldep
+set /P sure=Are you sure you want to reinstall dependencies? (y/n) 
+if "%sure%" EQU "y" goto :reindep
+if "%sure%" EQU "n" goto :choice
+goto :reinstalldep
+
+:reindep
+winget install git.git
+winget install dotnet-runtime-6
+@echo Reinstallation complete!
+pause
 goto :choice
 
 :reset
