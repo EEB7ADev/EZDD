@@ -83,6 +83,7 @@ copy *.bat .\..
 cd..
 del patchversion.txt
 @echo %npver% >> patchversion.txt
+cls
 @echo patch completed!
 pause
 
