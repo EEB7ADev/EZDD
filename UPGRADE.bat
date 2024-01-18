@@ -32,6 +32,7 @@ REM load new patch version
 set /P npver=<"patchversion.txt"
 cd ..
 if %cpver% LSS %npver% goto :appatch
+if %cpver% EQU %npver% goto :latest
 :appatch
 cls
 @echo A small patch is available!
