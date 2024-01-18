@@ -21,7 +21,7 @@ We are very close to V1, Here are some things I want to do before V1
 **TODO**
 <br>
 ~- [] maybe removed the need for git?, If this works, I need to make a settings option called remove git.~ curl cant download whole repositorys
-- [] "small patches" which are small patches that arent release worthy. This will make the program copy files from the repo rather than from the installer package, you will be able to update to these patches from option 7. check for updates
+- [X] "small patches" which are small patches that arent release worthy. This will make the program copy files from the repo rather than from the installer package, you will be able to update to these patches from option 7. check for updates
 - [] move the files downloaded during installation to the appdata folder
 - [] Create a settings option to manage the appdata folder
 - [] create a settings option to reinstall dependencies
