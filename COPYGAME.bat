@@ -84,7 +84,7 @@ cd "%folnm%"
 cls
 dir *.exe
 @echo shown above is the directory of the depot downloaded game
-set /P exenm=Please type in the executable name of which launches the game
+set /P exenm=Please type in the executable name of which launches the game 
 if not exist "%exenm%.exe" (
     @echo This exe does not exist, please enter a valid exe
     pause
