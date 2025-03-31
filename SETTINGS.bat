@@ -35,8 +35,9 @@ goto :cleanup
 :del
 rd /s /q depots
 goto :choice
+
 :appdata
-start "%LOCALAPPDATA%\ECC\EZDD"
+explorer.exe "%LOCALAPPDATA%\ECC\EZDD"
 
 :reinstalldep
 set /P sure=Are you sure you want to reinstall dependencies? (y/n) 
