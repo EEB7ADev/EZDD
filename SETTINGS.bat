@@ -38,6 +38,7 @@ goto :choice
 
 :appdata
 explorer.exe "%LOCALAPPDATA%\ECC\EZDD"
+goto :choice
 
 :reinstalldep
 set /P sure=Are you sure you want to reinstall dependencies? (y/n) 
