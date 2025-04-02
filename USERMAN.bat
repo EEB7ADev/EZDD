@@ -11,7 +11,7 @@ cls
 @echo 1. Inspect slots
 @echo 2. Manage slots
 @echo 3. How do I add/delete slots
-set /P c=4. Return to main menu
+set /P c=4. Return to main menu 
 if "%c%" EQU "1" goto :inspect
 if "%c%" EQU "2" goto :manage
 if "%c%" EQU "3" goto :how
@@ -21,7 +21,7 @@ goto :choice
 :inspect
 cls
 dir "%LOCALAPPDATA%\ECC\EZDD\user"
-set /P slot=Select which slot, or r for return
+set /P slot=Select which slot, or r for return 
 
 if "%slot%" EQU "r" goto :choice
 
