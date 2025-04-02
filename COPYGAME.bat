@@ -6,6 +6,9 @@ if not exist depotdownloader.exe (
     pause
     goto :bye
 )
+
+mkdir "%LOCALAPPDATA%\ECC\SteamDD"
+
 cls
 title Copy Downloaded game
 set /P id=Enter the depot id here or type in b to quit 
