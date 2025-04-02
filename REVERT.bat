@@ -1,4 +1,5 @@
 @echo off
+mkdir "%LOCALAPPDATA%\ECC\SteamDD"
 if exist "%appdata%\..\local\ecc\steamdd\pa.th" (
     goto :revert
 )
