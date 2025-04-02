@@ -13,16 +13,18 @@ cls
 @echo Here are the options available in this menu:
 @echo 1. Cleanup depots
 @echo 2. Manage AppData folder
-@echo 3. Reinstall Dependencies
-@echo 4. Reset program
-@echo 5. Uninstall EZDD
-set /P choice=6. Quit 
+@echo 3. Validate steamapps\common folder
+@echo 4. Reinstall Dependencies
+@echo 5. Reset program
+@echo 6. Uninstall EZDD
+set /P choice=7. Quit 
 if "%choice%" EQU "1" goto :cleanup
 if "%choice%" EQU "2" goto :appdata
-if "%choice%" EQU "3" goto :reinstalldep
-if "%choice%" EQU "4" goto :reset
-if "%choice%" EQU "5" goto :uninstall
-if "%choice%" EQU "6" goto :bye
+if "%choice%" EQU "3" goto :comnvali
+if "%choice%" EQU "4" goto :reinstalldep
+if "%choice%" EQU "5" goto :reset
+if "%choice%" EQU "6" goto :uninstall
+if "%choice%" EQU "7" goto :bye
 goto :choice
 
 :cleanup
@@ -38,6 +40,52 @@ goto :choice
 
 :appdata
 explorer.exe "%LOCALAPPDATA%\ECC\EZDD"
+goto :choice
+
+:comnvali
+mkdir "%LOCALAPPDATA%\ECC\SteamDD"
+cls
+if not exist "%LOCALAPPDATA%\ECC\SteamDD\pa.th" (
+    :svpath
+    cls
+    @echo The path does not seem to be saved.
+    set /P svpth=Save the path? [y/n] 
+    if "%svpth%" EQU "y" goto :savepath
+    if "%svpth%" EQU "n" goto :choice
+    goto :svpath
+)
+
+set /P steampth=<"%LOCALAPPDATA%\ECC\SteamDD\pa.th"
+if not exist "%steampth%\..\..\steamapps" (
+    @echo the currently saved path is not valid
+    pause
+    goto :svpath
+)
+:crctpth
+cls
+set /P crctpth=Is "%steampth%" the correct path? (y/n) 
+if "%crctpth%" EQU "y" goto :pathsaved
+if "%crctpth%" EQU "n" goto :isvalidsteampath
+goto :crctpth
+
+:savepath
+if exist "C:\Program Files (x86)\Steam\steamapps" (
+    @echo "C:\Program Files (x86)\Steam\steamapps\common" >> "%appdata%\..\local\ecc\steamdd\pa.th"
+    goto :copy
+)
+:isvalidsteampath
+cls
+set /P p=type in your steamapps\common location now 
+if not exist "%p%\..\..\steamapps" (
+    @echo Please enter a valid path
+    pause
+    goto :isvalidsteampath
+)
+@echo %p% >> "%appdata%\..\local\ecc\steamdd\pa.th"
+
+:pathsaved
+@echo your steamapps\common location is now saved.
+pause
 goto :choice
 
 :reinstalldep
@@ -65,7 +113,7 @@ goto :reset
 @echo Last chance before deleting
 rd /s "%LOCALAPPDATA%\ECC\EZDD\"
 rd /s /q "%LOCALAPPDATA%\ECC\SteamDD"
-goto :choice
+goto :bye
 
 :uninstall
 REM Fetch the latest release information from the GitHub API
