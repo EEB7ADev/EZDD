@@ -1,11 +1,15 @@
 @echo off
+title Revert Downgrade
+@echo This will not delete the old version, it will archive it by renaming it to "[GAME]OLD"
+pause
 mkdir "%LOCALAPPDATA%\ECC\SteamDD"
+cls
 if exist "%appdata%\..\local\ecc\steamdd\pa.th" (
     goto :revert
 )
 cls
 if exist "C:\Program Files (x86)\Steam\steamapps" (
-    @echo "C:\Program Files (x86)\Steam\steamapps\common" >> "%appdata%\..\local\ecc\steamdd\pa.th"
+    @echo "C:\Program Files (x86)\Steam\steamapps\common">> "%appdata%\..\local\ecc\steamdd\pa.th"
     goto :revert
 )
 :isvalidsteampath
@@ -16,7 +20,7 @@ if not exist "%path%\..\..\steamapps" (
     pause
     goto :isvalidsteampath
 )
-@echo %p% >> "%appdata%\..\local\ecc\steamdd\pa.th"
+@echo %p%>> "%appdata%\..\local\ecc\steamdd\pa.th"
 
 :revert
 set /P path=<"%appdata%\..\local\ecc\steamdd\pa.th"
@@ -45,7 +49,8 @@ cd "%game%"
 cls
 dir *.exe
 @echo shown above is the directory of the depot downloaded game
-set /P exenm=Please type in the executable name of which launches the game
+set /P exenm=Please type in the executable name of which launches the game, or if the exe is in a subfolder, type in "subfolder" without quotes 
+if "%exenm%" EQU "subfolder" goto :subfolder
 if not exist "%exenm%.exe" (
     @echo This exe does not exist, please enter a valid exe
     pause
@@ -59,6 +64,14 @@ title instruction on Validation
 @echo please note that some games will not require validation, but will be launched anyways
 pause
 %exenm%
+exit
+
+:subfolder
+cls
+@echo The game folder will now open, please launch the executable to complete the validation progress, the application will now quit.
+pause
+start .
+exit
 
 :bye
 set /P ezpath=<"%appdata%\..\local\ecc\ezdd\loca.tion"

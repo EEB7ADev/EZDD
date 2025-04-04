@@ -44,7 +44,7 @@ cls
 @echo Welcome to the main menu of EZDD!
 @echo Choose an option
 @echo 1. Download a game
-@echo 2. Move and activate a game
+@echo 2. Move/activate a game
 @echo 3. Revert depot download
 @echo 4. User Management
 @echo 5. What is Steam activation?

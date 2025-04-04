@@ -33,10 +33,14 @@ if not exist "%p%\..\..\steamapps" (
     pause
     goto :isvalidsteampath
 )
-@echo %p% >> "%appdata%\..\local\ecc\steamdd\pa.th"
+@echo %p%>> "%appdata%\..\local\ecc\steamdd\pa.th"
 
 :copy
 cls
+set /P mvoract=Do you want to copy over a new game to your steamapps\common dir or re-activate an already copied game? New game or Re-activate game (n/r) 
+if "%mvoract%" EQU "n" goto :newgm
+if "%mvoract%" EQU "r" goto :reactvte
+:newgm
 title Steam Validation and copy process
 set /P steampath=<"%appdata%\..\local\ecc\steamdd\pa.th"
 @echo We will now open 2 directories, the first directory is your common folder
@@ -87,7 +91,8 @@ cd "%folnm%"
 cls
 dir *.exe
 @echo shown above is the directory of the depot downloaded game
-set /P exenm=Please type in the executable name of which launches the game 
+set /P exenm=Please type in the executable name of which launches the game, or if the exe is in a subfolder, type in "subfolder" without quotes 
+if "%exenm%" EQU "subfolder" goto :subfolder
 if not exist "%exenm%.exe" (
     @echo This exe does not exist, please enter a valid exe
     pause
@@ -101,6 +106,32 @@ title instruction on Validation
 @echo please note that some games will not require validation, but will be launched anyways
 pause
 %exenm%
+exit
+
+:subfolder
+cls
+@echo The game folder will now open, please launch the executable to complete the validation progress, the application will now quit.
+pause
+start .
+exit
+
+:reactvte
+title Steam Validation process
+set /P steampath=<"%appdata%\..\local\ecc\steamdd\pa.th"
+cls
+cd /d "%steampath%"
+:rgmnm
+cls
+set /P name=What is the game you want to re-activate? ITS CASE SENSITIVE!!! 
+if not exist "%name%OLD" (
+    @echo This game does not exist, or it has not been copied over yet.
+    pause
+    goto :rgmnm
+)
+rename "%name%" "%name%CURRENT"
+rename "%name%OLD" "%name%"
+cd "%name%"
+goto :exenm
 
 :bye
 set /P ezpth=<"%LOCALAPPDATA%\ECC\EZDD\loca.tion"
