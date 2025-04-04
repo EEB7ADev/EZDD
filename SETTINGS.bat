@@ -81,7 +81,7 @@ if not exist "%p%\..\..\steamapps" (
     pause
     goto :isvalidsteampath
 )
-@echo %p% >> "%appdata%\..\local\ecc\steamdd\pa.th"
+@echo %p%>> "%appdata%\..\local\ecc\steamdd\pa.th"
 
 :pathsaved
 @echo your steamapps\common location is now saved.
