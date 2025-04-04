@@ -96,7 +96,7 @@ goto :reinstalldep
 
 :reindep
 winget install git.git
-winget install dotnet-runtime-6
+winget install dotnet-runtime-9
 @echo Reinstallation complete!
 pause
 goto :choice
