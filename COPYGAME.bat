@@ -22,7 +22,7 @@ if exist "%appdata%\..\local\ecc\steamdd\pa.th" (
 )
 cls
 if exist "C:\Program Files (x86)\Steam\steamapps" (
-    @echo "C:\Program Files (x86)\Steam\steamapps\common" >> "%appdata%\..\local\ecc\steamdd\pa.th"
+    @echo "C:\Program Files (x86)\Steam\steamapps\common">> "%appdata%\..\local\ecc\steamdd\pa.th"
     goto :copy
 )
 :isvalidsteampath
