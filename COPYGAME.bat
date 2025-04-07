@@ -21,8 +21,9 @@ if exist "%appdata%\..\local\ecc\steamdd\pa.th" (
     goto :copy
 )
 cls
-if exist "C:\Program Files (x86)\Steam\steamapps" (
-    @echo "C:\Program Files (x86)\Steam\steamapps\common">> "%appdata%\..\local\ecc\steamdd\pa.th"
+set "steamapps=C:\Program Files (x86)\Steam\steamapps\common"
+if exist %steamapps% (
+    >"%appdata%\..\local\ecc\steamdd\pa.th" echo %steamapps%
     goto :copy
 )
 :isvalidsteampath
@@ -33,7 +34,7 @@ if not exist "%p%\..\..\steamapps" (
     pause
     goto :isvalidsteampath
 )
-@echo %p%>> "%appdata%\..\local\ecc\steamdd\pa.th"
+@echo %p%> "%appdata%\..\local\ecc\steamdd\pa.th"
 
 :copy
 cls
@@ -51,7 +52,7 @@ set /P steampath=<"%appdata%\..\local\ecc\steamdd\pa.th"
 @echo rename the folder you see into the SAME FOLDER NAME
 @echo if you are confused about all this, please select the "What is Steam Activation in the home menu"
 pause
-start %steampath%
+explorer.exe "%steampath%"
 start .\depots\%id%
 
 :gamefolder
@@ -101,7 +102,7 @@ if not exist "%exenm%.exe" (
 cls
 title instruction on Validation
 @echo the game will now launch
-@echo please wait for the game to be reopned by steam, when that happens, steam validation is a success
+@echo please wait for the game to be reopened by steam, when that happens, steam validation is a success
 @echo if you are confused, please select the "What is Steam Activation in the main menu"
 @echo please note that some games will not require validation, but will be launched anyways
 pause
@@ -112,7 +113,7 @@ exit
 cls
 @echo The game folder will now open, please launch the executable to complete the validation progress, the application will now quit.
 pause
-start .
+explorer.exe .
 exit
 
 :reactvte

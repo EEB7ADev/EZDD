@@ -43,11 +43,12 @@ explorer.exe "%LOCALAPPDATA%\ECC\EZDD"
 goto :choice
 
 :comnvali
+set empty= 
 mkdir "%LOCALAPPDATA%\ECC\SteamDD"
 cls
 if not exist "%LOCALAPPDATA%\ECC\SteamDD\pa.th" (
     :svpath
-    cls
+    REM cls
     @echo The path does not seem to be saved.
     set /P svpth=Save the path? [y/n] 
     if "%svpth%" EQU "y" goto :savepath
@@ -62,6 +63,7 @@ if not exist "%steampth%\..\..\steamapps" (
     goto :svpath
 )
 :crctpth
+set /P steampth=<"%LOCALAPPDATA%\ECC\SteamDD\pa.th"
 cls
 set /P crctpth=Is "%steampth%" the correct path? (y/n) 
 if "%crctpth%" EQU "y" goto :pathsaved
@@ -69,9 +71,10 @@ if "%crctpth%" EQU "n" goto :isvalidsteampath
 goto :crctpth
 
 :savepath
-if exist "C:\Program Files (x86)\Steam\steamapps" (
-    @echo "C:\Program Files (x86)\Steam\steamapps\common">> "%appdata%\..\local\ecc\steamdd\pa.th"
-    goto :copy
+set "steamapps=C:\Program Files (x86)\Steam\steamapps\common"
+if exist %steamapps% (
+    >"%appdata%\..\local\ecc\steamdd\pa.th" echo %steamapps%
+    goto :crctpth
 )
 :isvalidsteampath
 cls
@@ -81,7 +84,7 @@ if not exist "%p%\..\..\steamapps" (
     pause
     goto :isvalidsteampath
 )
-@echo %p%>> "%appdata%\..\local\ecc\steamdd\pa.th"
+@echo %p%> "%appdata%\..\local\ecc\steamdd\pa.th"
 
 :pathsaved
 @echo your steamapps\common location is now saved.

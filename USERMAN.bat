@@ -37,7 +37,7 @@ goto :inspect
 
 
 :manage
-start explorer "%LOCALAPPDATA%\ECC\EZDD\user"
+explorer.exe "%LOCALAPPDATA%\ECC\EZDD\user"
 goto :choice
 
 
@@ -49,7 +49,7 @@ if "%open%" EQU "n" goto :noopen
 :noopen
 @echo Ok, we will open it for you.
 pause
-start explorer "%LOCALAPPDATA%\ECC\EZDD\user"
+explorer.exe "%LOCALAPPDATA%\ECC\EZDD\user"
 :goto xplain
 
 :xplain
