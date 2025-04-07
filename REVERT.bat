@@ -15,7 +15,7 @@ if exist "C:\Program Files (x86)\Steam\steamapps" (
 :isvalidsteampath
 cls
 set /P p=Your steamapps location has not yet been saved, type in your steamapps\common location now 
-if not exist "%path%\..\..\steamapps" (
+if not exist "%p%\..\..\steamapps" (
     @echo Please enter a valid path
     pause
     goto :isvalidsteampath
@@ -23,8 +23,8 @@ if not exist "%path%\..\..\steamapps" (
 @echo %p%>> "%appdata%\..\local\ecc\steamdd\pa.th"
 
 :revert
-set /P path=<"%appdata%\..\local\ecc\steamdd\pa.th"
-cd /d "%path%"
+set /P spath=<"%appdata%\..\local\ecc\steamdd\pa.th"
+cd /d "%spath%"
 @echo We will now open the steamapps folder
 pause
 start .
