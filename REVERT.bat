@@ -8,7 +8,7 @@ if exist "%appdata%\..\local\ecc\steamdd\pa.th" (
     goto :revert
 )
 cls
-set "steamapps=C:\Program Files (x86)\Steam\steamapps\common"
+set steamapps="C:\Program Files (x86)\Steam\steamapps\common"
 if exist %steamapps% (
     >"%appdata%\..\local\ecc\steamdd\pa.th" echo %steamapps%
     goto :revert
@@ -24,8 +24,8 @@ if not exist "%path%\..\..\steamapps" (
 @echo %p%> "%appdata%\..\local\ecc\steamdd\pa.th"
 
 :revert
-set /P path=<"%appdata%\..\local\ecc\steamdd\pa.th"
-cd /d "%path%"
+set /P epath=<"%appdata%\..\local\ecc\steamdd\pa.th"
+cd /d "%epath%"
 @echo We will now open the steamapps folder
 pause
 start .
@@ -64,14 +64,14 @@ title instruction on Validation
 @echo if you are confused, please select the "What is Steam Activation in the main menu"
 @echo please note that some games will not require validation, but will be launched anyways
 pause
-%exenm%
+start %exenm%
 exit
 
 :subfolder
 cls
 @echo The game folder will now open, please launch the executable to complete the validation progress, the application will now quit.
 pause
-explorer.exe .
+start explorer.exe .
 exit
 
 :bye

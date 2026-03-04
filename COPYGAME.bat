@@ -1,4 +1,4 @@
-@echo off
+@echo on
 :depotcheck
 if not exist depotdownloader.exe (
     @echo The app will not function because a core requirement depotdownloader is nonexistent
@@ -21,13 +21,13 @@ if exist "%appdata%\..\local\ecc\steamdd\pa.th" (
     goto :copy
 )
 cls
-set "steamapps=C:\Program Files (x86)\Steam\steamapps\common"
+set steamapps="C:\Program Files (x86)\Steam\steamapps\common"
 if exist %steamapps% (
     >"%appdata%\..\local\ecc\steamdd\pa.th" echo %steamapps%
     goto :copy
 )
 :isvalidsteampath
-cls
+REM cls
 set /P p=Your steamapps location has not yet been saved, type in your steamapps\common location now 
 if not exist "%p%\..\..\steamapps" (
     @echo Please enter a valid path
@@ -37,7 +37,7 @@ if not exist "%p%\..\..\steamapps" (
 @echo %p%> "%appdata%\..\local\ecc\steamdd\pa.th"
 
 :copy
-cls
+REM cls
 set /P mvoract=Do you want to copy over a new game to your steamapps\common dir or re-activate an already copied game? New game or Re-activate game (n/r) 
 if "%mvoract%" EQU "n" goto :newgm
 if "%mvoract%" EQU "r" goto :reactvte
@@ -106,14 +106,14 @@ title instruction on Validation
 @echo if you are confused, please select the "What is Steam Activation in the main menu"
 @echo please note that some games will not require validation, but will be launched anyways
 pause
-%exenm%
+start %exenm%
 exit
 
 :subfolder
 cls
 @echo The game folder will now open, please launch the executable to complete the validation progress, the application will now quit.
 pause
-explorer.exe .
+start explorer.exe .
 exit
 
 :reactvte

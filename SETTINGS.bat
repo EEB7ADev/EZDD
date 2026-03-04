@@ -71,7 +71,7 @@ if "%crctpth%" EQU "n" goto :isvalidsteampath
 goto :crctpth
 
 :savepath
-set "steamapps=C:\Program Files (x86)\Steam\steamapps\common"
+set steamapps="C:\Program Files (x86)\Steam\steamapps\common"
 if exist %steamapps% (
     >"%appdata%\..\local\ecc\steamdd\pa.th" echo %steamapps%
     goto :crctpth
