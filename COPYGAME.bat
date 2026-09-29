@@ -1,4 +1,4 @@
-@echo on
+@echo off
 :depotcheck
 if not exist depotdownloader.exe (
     @echo The app will not function because a core requirement depotdownloader is nonexistent
